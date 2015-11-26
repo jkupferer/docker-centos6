@@ -24,7 +24,7 @@ or by cloning this repository and doing
 Then build apitrace as:
 
     $ cd /path/to/git/clone/of/apitrace
-    $ docker run -i -t -v $PWD:$PWD -u `id -u` centos6-gcc-4.9 cmake \
+    $ docker run -i -t -v $PWD:$PWD -u `id -u` centos6-gcc49 cmake \
         -H$PWD \
         -B$PWD/build \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -32,7 +32,7 @@ Then build apitrace as:
         -DENABLE_STATIC_LIBSTDCXX=ON \
         -DENABLE_STATIC_EXE=ON \
         -DENABLE_GUI=OFF
-    $ docker run -i -t -v $PWD:$PWD -u `id -u` centos6-gcc-4.9 cmake --build build -- -j`nproc`
+    $ docker run -i -t -v $PWD:$PWD -u `id -u` centos6-gcc49 cmake --build $PWD/build -- -j`nproc`
 
 You can verify the symbols versions doing
 
@@ -43,6 +43,6 @@ There should be:
 
 * no `glibc` symbol with version higher than `GLIBC_2.12`
 
-* no `GLIBCXX_*`symbol whatsoever, given that `libstdc++`` is statically linked
+* no `GLIBCXX_*`symbol whatsoever, given that `libstdc++` is statically linked
 
 See also https://gcc.gnu.org/onlinedocs/libstdc++/manual/abi.html
